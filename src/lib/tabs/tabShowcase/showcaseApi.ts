@@ -18,10 +18,13 @@ import {
 import { ShowcaseScreen } from 'lib/tabs/tabShowcase/showcaseTabTypes'
 import { useShowcaseTabStore } from 'lib/tabs/tabShowcase/useShowcaseTabStore'
 
+// AWS Lambda 接口地址，用于代理 Enka/Mihomo 的 API 请求（解决浏览器跨域限制）
 const API_ENDPOINT = 'https://9di5b7zvtb.execute-api.us-west-2.amazonaws.com/prod'
 
-const THROTTLE_SECONDS = 10
+const THROTTLE_SECONDS = 10 // 节流冷却时间（秒），同一 UID 10 秒内不能重复请求
 
+// submitForm 的参数类型，scorerId 即玩家游戏账号 UID（9位数字）
+// 命名沿用旧版"Relic Scorer"时期，页面改名为 Showcase 后未更新
 export type ShowcaseTabForm = {
   scorerId: string | null,
 }
